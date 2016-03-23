@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript na root.cz - mám ho povolit? | monnef&#39;s notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="V předchozím článku jsem se věnoval datové a časové náročnosti JavaScriptu, fontů a reklam na root.cz. V diskuzním vláknu padlo tvrzení, proč zapínat JavaScript, když to akorát zpomaluje. Problém toh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript na root.cz - mám ho povolit?">
+<meta property="og:url" content="http://mnn.github.io/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/index.html">
+<meta property="og:site_name" content="monnef's notes">
+<meta property="og:description" content="V předchozím článku jsem se věnoval datové a časové náročnosti JavaScriptu, fontů a reklam na root.cz. V diskuzním vláknu padlo tvrzení, proč zapínat JavaScript, když to akorát zpomaluje. Problém toh">
+<meta property="og:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/logo.png">
+<meta property="og:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_1.svg">
+<meta property="og:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_2.svg">
+<meta property="og:updated_time" content="2016-03-23T16:42:15.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript na root.cz - mám ho povolit?">
+<meta name="twitter:description" content="V předchozím článku jsem se věnoval datové a časové náročnosti JavaScriptu, fontů a reklam na root.cz. V diskuzním vláknu padlo tvrzení, proč zapínat JavaScript, když to akorát zpomaluje. Problém toh">
+<meta name="twitter:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/logo.png">
+  
+    <link rel="alternate" href="/atom.xml" title="monnef&#39;s notes" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+  <style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic&subset=latin,latin-ext);
+
+  body {
+    font: 16px 'Noto Sans', "Helvetica Neue", Helvetica, Arial, sans-serif
+  }
+
+  .article-entry .post-logo {
+    float: left;
+    margin: 1em;
+    margin-left: 0;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">monnef&#39;s notes</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mnn.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript-na-root-cz-mam-ho-povolit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/" class="article-date">
+  <time datetime="2016-03-23T16:42:15.000Z" itemprop="datePublished">23. 3. 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript na root.cz - mám ho povolit?
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/logo.png" class="post-logo">
+<p>V <a href="/blog/cs/2016/Root-cz-osklivy-JavaScript-a-fonty-mi-ruinuji-FUP/" title="předchozím článku">předchozím článku</a> jsem se věnoval datové a časové náročnosti JavaScriptu, fontů a reklam na <a href="http://root.cz" target="_blank" rel="external">root.cz</a>. V diskuzním vláknu padlo tvrzení, proč zapínat JavaScript, když to akorát zpomaluje. Problém tohoto argumentu je, myslím si, celkem zřejmý: &bdquo;Proč povolovat obrázky, když to vše jen zpomalují.&ldquo; Ano, máte možnost zakázat si obrázky, ale proč to dělat, když přijdete o nemalou část požitku z prohlížení stránky? Navíc JavaScript roota je povětšinou použit k dotažení věcí, které nejdou řešit pomocí CSS (např. lazy loading obrázků nebo přilepení “asociální lišty” až v určitém bodě posunu po stránce).</p>
+<p>V diskuzi jsem uvedl, že mám silné podezření, že za zpomalení nemůže JavaScript samotné stránky, nazvěme jej <em>užitečný</em> JavaScript, ale reklamní, pojmenujme si jej <em>balastní</em> JavaScript, který uživateli navíc nic přímo nepřináší.</p>
+<p>Níže jsou výsledky mého měření (každá hodnota je průměr ze tří měření). Začneme zlehka údaji o prvním načtení, které pro normální uživatele, kteří si z rozmaru nečistí cache každých pár hodin/minut, v podstatě nic neznamenají. Běžně si totiž prohlížeč stažený kód v JavaScriptu pamatuje, dokud nevyprší časové razítko od serveru, nebo dokud mu server neřekne, že má novější verzi. Ku příkladu velký <del>bratr</del> Google má nastaveno toto časové razítko na jeden <em>rok</em>.</p>
+<a id="more"></a>
+<h1 id="Prvni-nacteni-stranky"><a href="#Prvni-nacteni-stranky" class="headerlink" title="První načtení stránky"></a>První načtení stránky</h1><p>Na rozdíl od minulého článku jsem se uchýlil k více vizuálnímu pojetí, je totiž mnohem názornější a většina čtenářů stejně nebude studovat tabulky obsahující desítky buněk.</p>
+<img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_1.svg" alt="" "="" title="">
+<p>Z diagramu je patrné, že rozdíl mezi načtením bez <em>užitečného</em> JavaScriptu a načtením s tímto JavaScriptem je zanedbatelný. Ve skutečnosti mi vyšlo, že <em>se zapnutým</em> JavaScriptem je stránka o 4% <em>rychleji</em> načtená. Může to být způsobeno menším počtem vzorků, nebo skutečností, že doba načtení stránky podstatně více závisí na odezvě od serveru než na “počítání” JavaScriptu. Také fakt, že root používá lazy loading obrázků k tomu mohl přispět (na titulní stránce se načítají pouze obrázky článků, které čtenář vidí v aktuálním výřezu stránky).</p>
+<table>
+<thead>
+<tr>
+<th>JavaScript</th>
+<th>bez &times; <em>užitečný</em></th>
+<th><em>užitečný</em> &times; (<em>užitečný</em> + <em>balastní</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>relativní zpomalení</td>
+<td>-4,35%</td>
+<td>376,32%</td>
+</tr>
+<tr>
+<td>absolutní zpomalení [s]</td>
+<td>-0,07</td>
+<td>5,46</td>
+</tr>
+</tbody>
+</table>
+<p>Tabulka předkládá srovnání vždy dvou možností, znak &times; je použit ve významu “versus”. Jak se můžeme přesvědčit, ono zrychlení s <em>užitečným</em> JavaScriptem je z pohledu uživatele zanedbatelné - pouhých 70ms.</p>
+<p>Podstatně zajímavější je druhý sloupec, který srovnává čas načtení s <em>užitečným</em> JavaScriptem a čas potřebný k načtení stránky s povolenými reklamami, tzn. i s <em>balastním</em> JavaScriptem. Vychází nám, že zpomalení je značné - je třeba skoro <strong>pětkrát</strong> více času. Přes 5 vteřin se opravdu při načítání stránky neztratí a je velmi znatelné.</p>
+<h1 id="Dalsi-nacteni-stranky"><a href="#Dalsi-nacteni-stranky" class="headerlink" title="Další načtení stránky"></a>Další načtení stránky</h1><p>Nyní se přesuňme k tomu důležitému - doba načtení stránky při normálním používání, tzn. s plnou mezipamětí (cache).</p>
+<img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_2.svg" alt="" "="" title="">
+<p>Rudé obdélníky ve variantách <em>bez JavaScriptu</em> a <em>s JavaScriptem bez reklam</em> se liší poměrně málo, ale ne zanedbatelně. Když upřeme zrak na tabulku níže, tak zjistíme, že se zapnutím JavaScriptu jsme se dostali na zpomalení o 42%. Může to vypadat hrůzostrašně, ale když si uvědomíme, že absolutní rozdíl je 0,39 vteřiny, tak to není žádná tragédie. Možná rozdíl v době načítání ani nepostřehneme. Zato určitě oceníme plně funkční stránku, která lze používat tak, jak tvůrci zamýšleli. Bez JavaScriptu si např. na rootu nezobrazíme informace o profilu, překryté položky v horním menu nebo neohodnotíme příspěvek.</p>
+<table>
+<thead>
+<tr>
+<th>JavaScript</th>
+<th>bez &times; <em>užitečný</em></th>
+<th><em>užitečný</em> &times; (<em>užitečný</em> + <em>balastní</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>relativní zpomalení</td>
+<td>41,98%</td>
+<td>206,08%</td>
+</tr>
+<tr>
+<td>absolutní zpomalení [s]</td>
+<td>0,39</td>
+<td>2,71</td>
+</tr>
+</tbody>
+</table>
+<p>Reálný problém nastává až s reklamami. Tam, kde nám s <em>užitečným</em> JavaScriptem stačilo v průměru 1,32 vteřiny, najednou musíme čekat 4 vteřiny - to je <strong>třikrát</strong> více než bez reklam! A musím říct, že rozdíl mezi zhruba vteřinou a sekundami čtyřmi pocítí snad každý.</p>
+<p>Můj odhad byl správný, reklamní <em>balast</em> tvoří 67% doby načítání z celkových 4,03 vteřin, tvoří tak režiji v podobě 2,7 sekund. Naopak <em>užitečný</em> JavaScript si bere 29% ale z pouhých 1,32 vteřiny a lehce posouvá dobu načítaní o pouhé 0,39 sekundy. Neodpustím si trochu bulvarizování na závěr.</p>
+<p><em>Pokud tedy <strong>zablokujete reklamy</strong>, tak získáte <strong>zrychlení přes 200%</strong>!<br>A to se vyplatí!</em></p>
+<p>PS: Pokud máte velmi slabý HW, pak je tedy nejlepší volba buďto blokovat reklamy, nebo veškerý JavaScript, a zvážit, zda nepodpořit roota <a href="http://www.root.cz/podporte/" target="_blank" rel="external">jinou cestou</a>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/" data-id="cim52w268000bmo8bqx5lwp3c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/root-cz/">root.cz</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/cs/2016/Root-cz-osklivy-JavaScript-a-fonty-mi-ruinuji-FUP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Root.cz - ošklivý JavaScript a fonty mi ruinují FUP!</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/font/">font</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/performance/">performance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/root-cz/">root.cz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/traffic/">traffic</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/blog/" style="font-size: 10px;">blog</a> <a href="/blog/tags/font/" style="font-size: 10px;">font</a> <a href="/blog/tags/performance/" style="font-size: 10px;">performance</a> <a href="/blog/tags/root-cz/" style="font-size: 15px;">root.cz</a> <a href="/blog/tags/traffic/" style="font-size: 10px;">traffic</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">březen 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/">JavaScript na root.cz - mám ho povolit?</a>
+          </li>
+        
+          <li>
+            <a href="/blog/cs/2016/Root-cz-osklivy-JavaScript-a-fonty-mi-ruinuji-FUP/">Root.cz - ošklivý JavaScript a fonty mi ruinují FUP!</a>
+          </li>
+        
+          <li>
+            <a href="/blog/en/2016/Hexo-is-here/">Hexo is here!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 monnef<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>
