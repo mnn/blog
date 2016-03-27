@@ -445,6 +445,12 @@ body {
 #nav-search-btn:before {
   content: "\f002";
 }
+#nav-github-btn:before {
+  content: "\f09b";
+}
+#nav-twitter-btn:before {
+  content: "\f099";
+}
 #search-form-wrap {
   position: absolute;
   top: 15px;
