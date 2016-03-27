@@ -14,11 +14,12 @@
 <meta property="og:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/logo.png">
 <meta property="og:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_1.svg">
 <meta property="og:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_2.svg">
-<meta property="og:updated_time" content="2016-03-26T13:59:47.608Z">
+<meta property="og:updated_time" content="2016-03-27T05:13:17.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript na root.cz - mám ho povolit?">
 <meta name="twitter:description" content="V předchozím článku jsem se věnoval datové a časové náročnosti JavaScriptu, fontů a reklam na root.cz. V diskuzním vláknu padlo tvrzení, proč zapínat JavaScript, když to akorát zpomaluje. Problém toh">
 <meta name="twitter:image" content="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/logo.png">
+<meta name="twitter:creator" content="@monnef">
   
     <link rel="alternate" href="/atom.xml" title="monnef&#39;s notes" type="application/atom+xml">
   
@@ -112,8 +113,8 @@
 <p>Níže jsou výsledky mého měření (každá hodnota je průměr ze tří měření). Začneme zlehka údaji o prvním načtení, které pro normální uživatele, kteří si z rozmaru nečistí cache každých pár hodin/minut, v podstatě nic neznamenají. Běžně si totiž prohlížeč stažený kód v JavaScriptu pamatuje, dokud nevyprší časové razítko od serveru, nebo dokud mu server neřekne, že má novější verzi. Ku příkladu velký <del>bratr</del> Google má nastaveno toto časové razítko na jeden <em>rok</em>.</p>
 <a id="more"></a>
 <h1 id="Prvni-nacteni-stranky"><a href="#Prvni-nacteni-stranky" class="headerlink" title="První načtení stránky"></a>První načtení stránky</h1><p>Na rozdíl od minulého článku jsem se uchýlil k více vizuálnímu pojetí, je totiž mnohem názornější a většina čtenářů stejně nebude studovat tabulky obsahující desítky buněk.</p>
-<img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_1.svg" alt="" "="" title="">
-<p>Z diagramu je patrné, že rozdíl mezi načtením bez <em>užitečného</em> JavaScriptu a načtením s tímto JavaScriptem je zanedbatelný. Ve skutečnosti mi vyšlo, že <em>se zapnutým</em> JavaScriptem je stránka o 4% <em>rychleji</em> načtená. Může to být způsobeno menším počtem vzorků, nebo skutečností, že doba načtení stránky podstatně více závisí na odezvě od serveru než na “počítání” JavaScriptu. Také fakt, že root používá lazy loading obrázků k tomu mohl přispět (na titulní stránce se načítají pouze obrázky článků, které čtenář vidí v aktuálním výřezu stránky).</p>
+<img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_1.svg" alt="První načtení stránky" title="První načtení stránky">
+<p>Z diagramu je patrné, že rozdíl mezi načtením bez <em>užitečného</em> JavaScriptu (1,52s) a načtením s tímto JavaScriptem je zanedbatelný. Ve skutečnosti mi vyšlo, že <em>se zapnutým</em> JavaScriptem je stránka o 4% <em>rychleji</em> načtená - 1,45s. Může to být způsobeno menším počtem vzorků, nebo skutečností, že doba načtení stránky podstatně více závisí na odezvě od serveru než na “počítání” JavaScriptu. Také fakt, že root používá lazy loading obrázků k tomu mohl přispět (na titulní stránce se načítají pouze obrázky článků, které čtenář vidí v aktuálním výřezu stránky).</p>
 <table>
 <thead>
 <tr>
@@ -136,10 +137,10 @@
 </tbody>
 </table>
 <p>Tabulka předkládá srovnání vždy dvou možností, znak &times; je použit ve významu “versus”. Jak se můžeme přesvědčit, ono zrychlení s <em>užitečným</em> JavaScriptem je z pohledu uživatele zanedbatelné - pouhých 70ms.</p>
-<p>Podstatně zajímavější je druhý sloupec, který srovnává čas načtení s <em>užitečným</em> JavaScriptem a čas potřebný k načtení stránky s povolenými reklamami, tzn. i s <em>balastním</em> JavaScriptem. Vychází nám, že zpomalení je značné - je třeba skoro <strong>pětkrát</strong> více času. Přes 5 vteřin se opravdu při načítání stránky neztratí a je velmi znatelné.</p>
+<p>Podstatně zajímavější je druhý sloupec, který srovnává čas načtení s <em>užitečným</em> JavaScriptem a čas potřebný k načtení stránky s povolenými reklamami, tzn. i s <em>balastním</em> JavaScriptem. Vychází nám, že zpomalení je značné - je třeba skoro <strong>pětkrát</strong> více času - 6,91s. Rozdíl přes 5 vteřin se opravdu při načítání stránky neztratí a je velmi znatelný (stránka je sice po pár vteřinách zobrazená, ale jak se zpracovávají reklamy, tak se “seká”).</p>
 <h1 id="Dalsi-nacteni-stranky"><a href="#Dalsi-nacteni-stranky" class="headerlink" title="Další načtení stránky"></a>Další načtení stránky</h1><p>Nyní se přesuňme k tomu důležitému - doba načtení stránky při normálním používání, tzn. s plnou mezipamětí (cache).</p>
-<img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_2.svg" alt="" "="" title="">
-<p>Rudé obdélníky ve variantách <em>bez JavaScriptu</em> a <em>s JavaScriptem bez reklam</em> se liší poměrně málo, ale ne zanedbatelně. Když upřeme zrak na tabulku níže, tak zjistíme, že se zapnutím JavaScriptu jsme se dostali na zpomalení o 42%. Může to vypadat hrůzostrašně, ale když si uvědomíme, že absolutní rozdíl je 0,39 vteřiny, tak to není žádná tragédie. Možná rozdíl v době načítání ani nepostřehneme. Zato určitě oceníme plně funkční stránku, kterou lze používat tak, jak tvůrci zamýšleli. Bez JavaScriptu si např. na rootu nezobrazíme informace o profilu, překryté položky v horním menu nebo neohodnotíme příspěvek.</p>
+<img src="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/chart_2.svg" alt="Další načtení stránky" title="Další načtení stránky">
+<p>Rudé obdélníky ve variantách <em>bez JavaScriptu</em> a <em>s JavaScriptem bez reklam</em> se liší poměrně málo, ale ne zanedbatelně. Když upřeme zrak na tabulku níže, tak zjistíme, že se zapnutím JavaScriptu jsme se dostali na zpomalení o 42%. Může to vypadat hrůzostrašně, ale když si uvědomíme, že absolutní rozdíl je 0,39 vteřiny (z 0,93 na 1,32), tak to není žádná tragédie. Možná rozdíl v době načítání ani nepostřehneme. Zato určitě <em>oceníme plně funkční stránku</em>, kterou lze používat tak, jak tvůrci zamýšleli. Bez JavaScriptu si např. na rootu nezobrazíme informace o profilu, překryté položky v horním menu nebo neohodnotíme příspěvek.</p>
 <table>
 <thead>
 <tr>
@@ -169,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/" data-id="cim97ggd40007gc8b3shn4043" class="article-share-link">Sdílet</a>
+      <a data-url="http://mnn.github.io/blog/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/" data-id="cim977vfx0007bo8bf0ek5ac1" class="article-share-link">Sdílet</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/performance/">performance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/root-cz/">root.cz</a></li></ul>
