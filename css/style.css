@@ -123,8 +123,8 @@ body,
   height: 100%;
 }
 body {
-  background: #eee;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #040003;
+  font: 16px "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
@@ -174,7 +174,7 @@ body {
   -ms-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
   z-index: 1;
-  background: #eee;
+  background: #040003;
 }
 .mobile-nav-on #wrap {
   left: 280px;
@@ -199,14 +199,18 @@ body {
   margin-left: 5px;
   line-height: 1em;
   text-shadow: 0 1px #fff;
+  text-shadow: 0 1px #ddb;
   font-weight: bold;
 }
 .article-inner,
 .archive-article-inner {
   background: #fff;
+  background: #212;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  border: 1px solid #ddd;
+  -webkit-box-shadow: 1px 2px 3px #000;
+  box-shadow: 1px 2px 3px #000;
+  border: 1px solid #535;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
@@ -237,7 +241,7 @@ body {
 }
 .article-entry hr,
 .widget hr {
-  border: 1px dashed #ddd;
+  border: 1px dashed #535;
 }
 .article-entry strong,
 .widget strong {
@@ -311,7 +315,7 @@ body {
 #header {
   height: 300px;
   position: relative;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #535;
 }
 #header:before,
 #header:after {
@@ -408,9 +412,9 @@ body {
 .nav-icon {
   font-family: FontAwesome;
   text-align: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
   padding: 20px 15px;
   position: relative;
   cursor: pointer;
@@ -488,9 +492,9 @@ body {
 .search-form-input {
   border: none;
   background: none;
-  color: #555;
+  color: #eeeee5;
   width: 100%;
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 13px "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -549,7 +553,7 @@ body {
   text-decoration: none;
   font-size: 2em;
   font-weight: bold;
-  color: #555;
+  color: #eeeee5;
   line-height: 1.1em;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
@@ -557,10 +561,10 @@ body {
   transition: color 0.2s;
 }
 a.article-title:hover {
-  color: #258fb8;
+  color: #ad98e2;
 }
 .article-entry {
-  color: #555;
+  color: #eeeee5;
   padding: 0 20px;
 }
 .article-entry:before,
@@ -593,8 +597,53 @@ a.article-title:hover {
   line-height: 1.1em;
   margin: 1.1em 0;
 }
+.article-entry h1 .headerlink,
+.article-entry h2 .headerlink,
+.article-entry h3 .headerlink,
+.article-entry h4 .headerlink,
+.article-entry h5 .headerlink,
+.article-entry h6 .headerlink {
+  position: relative;
+  display: none;
+}
+.article-entry h1 .headerlink:before,
+.article-entry h2 .headerlink:before,
+.article-entry h3 .headerlink:before,
+.article-entry h4 .headerlink:before,
+.article-entry h5 .headerlink:before,
+.article-entry h6 .headerlink:before {
+  font-family: FontAwesome;
+  content: '\f0c1';
+  left: -1.05em;
+  font-size: 80%;
+  position: absolute;
+  font-weight: normal;
+}
+.article-entry h1:hover .headerlink,
+.article-entry h2:hover .headerlink,
+.article-entry h3:hover .headerlink,
+.article-entry h4:hover .headerlink,
+.article-entry h5:hover .headerlink,
+.article-entry h6:hover .headerlink,
+.article-entry h1 .headerlink:hover,
+.article-entry h2 .headerlink:hover,
+.article-entry h3 .headerlink:hover,
+.article-entry h4 .headerlink:hover,
+.article-entry h5 .headerlink:hover,
+.article-entry h6 .headerlink:hover {
+  display: block;
+}
+.article-entry h1,
+.article-entry h2,
+.article-entry h3,
+.article-entry h4,
+.article-entry h5,
+.article-entry h6 {
+  margin-left: -1em;
+  padding-left: 1.5em;
+}
 .article-entry a {
-  color: #258fb8;
+  color: #ad98e2;
   text-decoration: none;
 }
 .article-entry a:hover {
@@ -623,11 +672,11 @@ a.article-title:hover {
 }
 .article-entry th {
   font-weight: bold;
-  border-bottom: 3px solid #ddd;
+  border-bottom: 3px solid #535;
   padding-bottom: 0.5em;
 }
 .article-entry td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #535;
   padding: 10px 0;
 }
 .article-entry blockquote {
@@ -637,9 +686,9 @@ a.article-title:hover {
   text-align: center;
 }
 .article-entry blockquote footer {
-  font-size: 14px;
+  font-size: 16px;
   margin: 1.6em 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -688,21 +737,21 @@ a.article-title:hover {
   padding: 6px 15px;
   -webkit-border-radius: 15px;
   border-radius: 15px;
-  background: #eee;
+  background: #040003;
   color: #999;
   text-shadow: 0 1px #fff;
   text-decoration: none;
 }
 .article-more-link a:hover {
-  background: #258fb8;
+  background: #ad98e2;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 1px #1e7293;
+  text-shadow: 0 1px #7e5dd1;
 }
 .article-footer {
   font-size: 0.85em;
   line-height: 1.6em;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #535;
   padding-top: 1.6em;
   margin: 0 20px 20px;
 }
@@ -719,7 +768,7 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-footer a:hover {
-  color: #555;
+  color: #eeeee5;
 }
 .article-tag-list-item {
   float: left;
@@ -772,7 +821,7 @@ a.article-title:hover {
     content: "";
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background: #ddd;
+    background: #535;
     -webkit-box-shadow: 0 1px 2px #fff;
     box-shadow: 0 1px 2px #fff;
   }
@@ -789,7 +838,7 @@ a.article-title:hover {
   display: block;
 }
 .article-nav-link-wrap:hover {
-  color: #555;
+  color: #eeeee5;
 }
 @media screen and (min-width: 768px) {
   .article-nav-link-wrap {
@@ -814,7 +863,7 @@ a.article-title:hover {
 .article-nav-caption {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #ddd;
+  color: #535;
   line-height: 1em;
   font-weight: bold;
 }
@@ -847,18 +896,18 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 15px;
-  color: #555;
+  color: #eeeee5;
   outline: none;
-  border: 1px solid #ddd;
+  border: 1px solid #535;
   -webkit-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
   height: 36px;
   line-height: 36px;
 }
 .article-share-links {
-  background: #eee;
+  background: #040003;
 }
 .article-share-links:before,
 .article-share-links:after {
@@ -958,13 +1007,13 @@ a.article-title:hover {
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #535;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   margin: 50px 0;
 }
 #comments a {
-  color: #258fb8;
+  color: #ad98e2;
 }
 .archives-wrap {
   margin: 50px 0;
@@ -1012,7 +1061,7 @@ a.article-title:hover {
 .archive-article-title {
   text-decoration: none;
   font-weight: bold;
-  color: #555;
+  color: #eeeee5;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
@@ -1020,7 +1069,7 @@ a.article-title:hover {
   line-height: 1.6em;
 }
 .archive-article-title:hover {
-  color: #258fb8;
+  color: #ad98e2;
 }
 .archive-article-footer {
   margin-top: 1em;
@@ -1038,7 +1087,7 @@ a.article-title:hover {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  border: 1px solid #ddd;
+  border: 1px solid #535;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   text-align: center;
@@ -1082,20 +1131,20 @@ a.article-title:hover {
   }
 }
 #page-nav .current {
-  color: #555;
+  color: #eeeee5;
   font-weight: bold;
 }
 #page-nav .space {
-  color: #ddd;
+  color: #535;
 }
 #footer {
-  background: #262a30;
+  background: #000;
   padding: 50px 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #535;
   color: #999;
 }
 #footer a {
-  color: #258fb8;
+  color: #ad98e2;
   text-decoration: none;
 }
 #footer a:hover {
@@ -1111,11 +1160,11 @@ a.article-title:hover {
   margin: 0 -20px;
   padding: 15px 20px;
   border-style: solid;
-  border-color: #ddd;
+  border-color: #535;
   border-width: 1px 0;
   overflow: auto;
   color: #ccc;
-  line-height: 22.400000000000002px;
+  line-height: 25.6px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -1127,7 +1176,7 @@ a.article-title:hover {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry code {
-  background: #eee;
+  background: #040003;
   text-shadow: 0 1px #fff;
   padding: 0 0.3em;
 }
@@ -1171,7 +1220,7 @@ a.article-title:hover {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
-  height: 22.400000000000002px;
+  height: 25.6px;
 }
 .article-entry .highlight .line.marked {
   background: #515151;
@@ -1179,7 +1228,7 @@ a.article-title:hover {
 .article-entry .gist {
   margin: 0 -20px;
   border-style: solid;
-  border-color: #ddd;
+  border-color: #535;
   border-width: 1px 0;
   background: #2d2d2d;
   padding: 15px 20px 15px 0;
@@ -1209,14 +1258,14 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.85em "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
   margin-left: 20px;
 }
 .article-entry .gist .gist-file .gist-meta a {
-  color: #258fb8;
+  color: #ad98e2;
   font-weight: normal;
 }
 .article-entry .gist .gist-file .gist-meta a:hover {
@@ -1315,16 +1364,17 @@ pre .javascript .function {
 .widget {
   color: #777;
   text-shadow: 0 1px #fff;
-  background: #ddd;
-  -webkit-box-shadow: 0 -1px 4px #ccc inset;
-  box-shadow: 0 -1px 4px #ccc inset;
-  border: 1px solid #ccc;
+  text-shadow: 0 1px #000;
+  background: #212;
+  -webkit-box-shadow: 0 -1px 4px #535 inset;
+  box-shadow: 0 -1px 4px #535 inset;
+  border: 1px solid #535;
   padding: 15px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 .widget a {
-  color: #258fb8;
+  color: #ad98e2;
   text-decoration: none;
 }
 .widget a:hover {
