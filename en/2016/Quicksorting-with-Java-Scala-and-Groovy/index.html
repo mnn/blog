@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Quicksorting with Java, Scala and Groovy | monnef&#39;s notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="I found this older post comparing performance of Java, Scala and Groovy on the Quicksort algorithm. I have cleaned all source files a bit, so they all have similar/same variable and method names. I a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quicksorting with Java, Scala and Groovy">
+<meta property="og:url" content="http://mnn.github.io/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/index.html">
+<meta property="og:site_name" content="monnef's notes">
+<meta property="og:description" content="I found this older post comparing performance of Java, Scala and Groovy on the Quicksort algorithm. I have cleaned all source files a bit, so they all have similar/same variable and method names. I a">
+<meta property="og:image" content="http://mnn.github.io/blog/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/logo.png">
+<meta property="og:image" content="http://mnn.github.io/blog/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/chart_1.svg">
+<meta property="og:image" content="http://mnn.github.io/blog/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/chart_2.svg">
+<meta property="og:updated_time" content="2016-04-06T12:31:00.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quicksorting with Java, Scala and Groovy">
+<meta name="twitter:description" content="I found this older post comparing performance of Java, Scala and Groovy on the Quicksort algorithm. I have cleaned all source files a bit, so they all have similar/same variable and method names. I a">
+<meta name="twitter:image" content="http://mnn.github.io/blog/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/logo.png">
+<meta name="twitter:creator" content="@monnef">
+  
+    <link rel="alternate" href="/atom.xml" title="monnef&#39;s notes" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+  <style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic&subset=latin,latin-ext);
+/*
+  body {
+    font: 16px 'Noto Sans', "Helvetica Neue", Helvetica, Arial, sans-serif
+  }
+*/
+  .article-entry .post-logo {
+    float: left;
+    margin: 1em;
+    margin-left: 0;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">monnef&#39;s notes</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-twitter-btn" class="nav-icon" title="Twitter" href="http://twitter.com/monnef"></a>
+        
+        
+          <a id="nav-github-btn" class="nav-icon" title="GitHub" href="http://github.com/mnn"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mnn.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Quicksorting-with-Java-Scala-and-Groovy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/" class="article-date">
+  <time datetime="2016-04-06T12:31:00.000Z" itemprop="datePublished">6. 4. 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/development/">development</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Quicksorting with Java, Scala and Groovy
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/logo.png" class="post-logo">
+<p>I found <a href="http://stronglytypedblog.blogspot.cz/2009/07/java-vs-scala-vs-groovy-performance.html" target="_blank" rel="external">this older post</a> comparing performance of <a href="http://java.com" target="_blank" rel="external">Java</a>, <a href="http://scala-lang.org/" target="_blank" rel="external">Scala</a> and <a href="http://www.groovy-lang.org/" target="_blank" rel="external">Groovy</a> on the <a href="https://en.wikipedia.org/wiki/Quicksort" target="_blank" rel="external">Quicksort algorithm</a>. I have cleaned all source files a bit, so they all have similar/same variable and method names. I also added “best of ten” functionality to get past VM warming up and other irregularities. In original post I was quite sceptical about the time it took to process, it was way too quick - 45ms and 56ms. I know it was probably because of Groovy, but it in my opinion ruined comparison of Java and Scala, because of such short time intervals combined with no VM heating up.</p>
+<a id="more"></a>
+<h1 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h1><p>I confess, I know almost nothing about Groovy, only things I did to the source was the renaming and adding “best of ten”. Also note that all examples have been written to quite closely match the Java version. I’m not sure about Groovy, but I would definitely write the Scala version a lot differently. And if the performance in real world project would be a huge problem, I would just grab some library - after all why crafting an oval wheel yourself when you can get a perfectly round wheel from store instantly and for free.</p>
+<h1 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h1><p>As I stated, one run of test program comprise ten iterations of Quicksort and picking the fastest one. On top of this every run was done three times, following values are averages.</p>
+<h1 id="I-want-facts"><a href="#I-want-facts" class="headerlink" title="I want facts!"></a>I want facts!</h1><p>Here you go, some <del>raw</del> cooked data for you:</p>
+<table>
+<thead>
+<tr>
+<th>Language / Samples / [ms]</th>
+<th>2000000</th>
+<th>4000000</th>
+<th>8000000</th>
+<th>16000000</th>
+<th>32000000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java</td>
+<td>32,33</td>
+<td>70,33</td>
+<td>140,67</td>
+<td>302,67</td>
+<td>647,00</td>
+</tr>
+<tr>
+<td>Scala</td>
+<td>29,00</td>
+<td>61,67</td>
+<td>236,33</td>
+<td>496,00</td>
+<td>1072,67</td>
+</tr>
+<tr>
+<td>Groovy</td>
+<td>4240,67</td>
+<td>8483,00</td>
+<td>17455,33</td>
+<td>37928,67</td>
+<td>74337,33</td>
+</tr>
+<tr>
+<td>Scala to Java</td>
+<td>-10,31%</td>
+<td>-12,32%</td>
+<td>68,01%</td>
+<td>63,88%</td>
+<td>65,79%</td>
+</tr>
+<tr>
+<td>Groovy to Java</td>
+<td>13015,46%</td>
+<td>11961,14%</td>
+<td>12309,00%</td>
+<td>12431,50%</td>
+<td>11389,54%</td>
+</tr>
+</tbody>
+</table>
+<p>I also created some pictures! … I mean diagrams. First one is a bit useless since we only see how Groovy is unbelievably slow.</p>
+<img src="/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/chart_1.svg" alt="Chart with all languages" title="Chart with all languages">
+<h2 id="Groovy-what-the-hell"><a href="#Groovy-what-the-hell" class="headerlink" title="Groovy, what the hell?"></a>Groovy, what the hell?</h2><p>I don’t know if an author of the benchmark source code in Groovy bungled it, but if not then I can’t understand why would anyone use that language. The price is too high - over 10 times slower than Java, you are far better off with Scala which is slower “only” by half and on smaller data it is even faster than Java. With Scala you are getting many little tools, speed and if you want you can start experimenting with heavy stuff like hardcore functional programming in <a href="https://github.com/scalaz/scalaz" target="_blank" rel="external">Scalaz</a>.</p>
+<p>Let’s try it again, this time without sluggish Groovy. Here we go:</p>
+<img src="/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/chart_2.svg" alt="Chart with Java and Scala" title="Chart with Java and Scala">
+<p>You can see that till 4 millions of items Scala wins by ~ ten percent, but then the card flips and Java is the strongman leaving Scala behind with score of being slower by two thirds than Java.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>If this slowness of Groovy is reality, and I did see <a href="https://www.techempower.com/benchmarks/#section=data-r12&hw=peak&test=fortune&l=6g0" target="_blank" rel="external">other benchmarks</a> supporting this, then I would not recommend using it in anything other than simple scripts. It is definitely not “better-Java” in a sense that you can easily switch and start writing your production code in Groovy, because the performance impact is huge - <strong>Groovy is over 10 times slower than Java</strong> (at least according to this benchmark).</p>
+<p>While I agree you won’t need that often so much power like this benchmark demands, I feel that Groovy is too much slower. If you want to maintain most of the performance while getting more concise and powerful language than Java then I can recommend you <a href="http://scala-lang.org/" target="_blank" rel="external">Scala</a> (you can find some examples of code and features <a href="https://en.wikipedia.org/wiki/Scala_%28programming_language%29" target="_blank" rel="external">here</a>).</p>
+<hr>
+<h2 id="Where-can-I-get-the-sources"><a href="#Where-can-I-get-the-sources" class="headerlink" title="Where can I get the sources?"></a>Where can I get the sources?</h2><p>You can find everything at <a href="https://github.com/mnn/quicksort-benchmark" target="_blank" rel="external">https://github.com/mnn/quicksort-benchmark</a>. It contains helper scripts, so you can easily try it yourself. Just <code>./compile.sh</code> and then <code>./bench.sh</code> (or if you are on MS platform <code>compile.bat</code> followed by <code>bench.bat</code>, but you will need properly set up mingw or some similar environment). Dependencies are quite obvious - <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">JDK</a>, <a href="http://scala-lang.org/" target="_blank" rel="external">Scala</a> and <a href="http://www.groovy-lang.org/" target="_blank" rel="external">Groovy</a>.</p>
+<h2 id="Other-details"><a href="#Other-details" class="headerlink" title="Other details"></a>Other details</h2><h3 id="Compiler-versions"><a href="#Compiler-versions" class="headerlink" title="Compiler versions"></a>Compiler versions</h3><ul>
+<li>Java 1.8.0_73</li>
+<li>Scala 2.11.7</li>
+<li>Groovy 2.4.6</li>
+</ul>
+<h3 id="Testing-computer"><a href="#Testing-computer" class="headerlink" title="Testing computer"></a>Testing computer</h3><p>I don’t think it is too much important, but I am appending short info about test PC.</p>
+<ul>
+<li>Windows 10 x64</li>
+<li>Intel Core i5-4460</li>
+<li>SSD</li>
+<li>DDR3 800MHz</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mnn.github.io/blog/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/" data-id="cimou2uil00166w8bf1oduwm8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Groovy/">Groovy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/benchmark/">benchmark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/microbenchmark/">microbenchmark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/performance/">performance</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript na root.cz - mám ho povolit?</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/development/">development</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/web/">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Groovy/">Groovy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/benchmark/">benchmark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/font/">font</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/microbenchmark/">microbenchmark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/performance/">performance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/root-cz/">root.cz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/traffic/">traffic</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Groovy/" style="font-size: 10px;">Groovy</a> <a href="/blog/tags/Java/" style="font-size: 10px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/blog/tags/benchmark/" style="font-size: 10px;">benchmark</a> <a href="/blog/tags/blog/" style="font-size: 10px;">blog</a> <a href="/blog/tags/font/" style="font-size: 10px;">font</a> <a href="/blog/tags/microbenchmark/" style="font-size: 10px;">microbenchmark</a> <a href="/blog/tags/performance/" style="font-size: 15px;">performance</a> <a href="/blog/tags/root-cz/" style="font-size: 15px;">root.cz</a> <a href="/blog/tags/traffic/" style="font-size: 10px;">traffic</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/en/2016/Quicksorting-with-Java-Scala-and-Groovy/">Quicksorting with Java, Scala and Groovy</a>
+          </li>
+        
+          <li>
+            <a href="/blog/cs/2016/JavaScript-na-root-cz-mam-ho-povolit/">JavaScript na root.cz - mám ho povolit?</a>
+          </li>
+        
+          <li>
+            <a href="/blog/cs/2016/Root-cz-osklivy-JavaScript-a-fonty-mi-ruinuji-FUP/">Root.cz - ošklivý JavaScript a fonty mi ruinují FUP!</a>
+          </li>
+        
+          <li>
+            <a href="/blog/en/2016/Hexo-is-here/">Hexo is here!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 monnef<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>
