@@ -112,7 +112,7 @@
       
         <p>Let us begin our story with some structure.</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Pupper</span>(<span class="params">name: <span class="type">String</span></span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Doggies</span>(<span class="params">oldPuppers: <span class="type">Seq</span>[<span class="type">Pupper</span>]</span>)</span></span><br></pre></td></tr></table></figure>
-<p>We obtain some data.</p>
+<p>Next we obtain some data.</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> input = <span class="type">Doggies</span>(<span class="type">Seq</span>(<span class="type">Pupper</span>(<span class="string">"Adolf"</span>), <span class="type">Pupper</span>(<span class="string">"Ben"</span>)))</span><br></pre></td></tr></table></figure>
 <p>And now we want to serialize them. I firmly believed that Scala’s case classes and collections are serializable. So I tried “classic” serialization:</p>
         

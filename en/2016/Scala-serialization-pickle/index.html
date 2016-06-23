@@ -7,23 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Let us begin our story with some structure.
 123case class Pupper(name: String)case class Doggies(oldPuppers: Seq[Pupper])
-We obtain some data.
-1val input = Doggies(Seq(Pupper(&quot;Adolf&quot;), Pupper(&quot;Ben&quot;)))">
+Next we obtain some data.
+1val input = Doggies(Seq(Pupper(&quot;Adolf&quot;), Pupper(&quot;Be">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scala serialization pickle">
 <meta property="og:url" content="http://mnn.github.io/blog/en/2016/Scala-serialization-pickle/index.html">
 <meta property="og:site_name" content="monnef's notes">
 <meta property="og:description" content="Let us begin our story with some structure.
 123case class Pupper(name: String)case class Doggies(oldPuppers: Seq[Pupper])
-We obtain some data.
-1val input = Doggies(Seq(Pupper(&quot;Adolf&quot;), Pupper(&quot;Ben&quot;)))">
-<meta property="og:updated_time" content="2016-06-23T11:04:02.114Z">
+Next we obtain some data.
+1val input = Doggies(Seq(Pupper(&quot;Adolf&quot;), Pupper(&quot;Be">
+<meta property="og:updated_time" content="2016-06-23T11:07:55.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scala serialization pickle">
 <meta name="twitter:description" content="Let us begin our story with some structure.
 123case class Pupper(name: String)case class Doggies(oldPuppers: Seq[Pupper])
-We obtain some data.
-1val input = Doggies(Seq(Pupper(&quot;Adolf&quot;), Pupper(&quot;Ben&quot;)))">
+Next we obtain some data.
+1val input = Doggies(Seq(Pupper(&quot;Adolf&quot;), Pupper(&quot;Be">
 <meta name="twitter:creator" content="@monnef">
   
     <link rel="alternate" href="/atom.xml" title="monnef&#39;s notes" type="application/atom+xml">
@@ -120,7 +120,7 @@ We obtain some data.
       
         <p>Let us begin our story with some structure.</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Pupper</span>(<span class="params">name: <span class="type">String</span></span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Doggies</span>(<span class="params">oldPuppers: <span class="type">Seq</span>[<span class="type">Pupper</span>]</span>)</span></span><br></pre></td></tr></table></figure>
-<p>We obtain some data.</p>
+<p>Next we obtain some data.</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> input = <span class="type">Doggies</span>(<span class="type">Seq</span>(<span class="type">Pupper</span>(<span class="string">"Adolf"</span>), <span class="type">Pupper</span>(<span class="string">"Ben"</span>)))</span><br></pre></td></tr></table></figure>
 <p>And now we want to serialize them. I firmly believed that Scala’s case classes and collections are serializable. So I tried “classic” serialization:</p>
 <a id="more"></a>
