@@ -892,7 +892,7 @@ a.article-title:hover {
 }
 .article-share-input {
   width: 100%;
-  background: none;
+  background: #212;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -907,7 +907,7 @@ a.article-title:hover {
   line-height: 36px;
 }
 .article-share-links {
-  background: #040003;
+  background: #212;
 }
 .article-share-links:before,
 .article-share-links:after {
@@ -1084,9 +1084,7 @@ a.article-title:hover {
 }
 #page-nav {
   margin: 50px auto;
-  background: #fff;
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
+  background: #212;
   border: 1px solid #535;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -1366,8 +1364,6 @@ pre .javascript .function {
   text-shadow: 0 1px #fff;
   text-shadow: 0 1px #000;
   background: #212;
-  -webkit-box-shadow: 0 -1px 4px #535 inset;
-  box-shadow: 0 -1px 4px #535 inset;
   border: 1px solid #535;
   padding: 15px;
   -webkit-border-radius: 3px;
